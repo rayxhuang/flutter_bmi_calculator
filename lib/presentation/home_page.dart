@@ -90,6 +90,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                     onPressed: () => null
                   ),
+                  kSizedBoxH20,
                 ],
               ),
             ),

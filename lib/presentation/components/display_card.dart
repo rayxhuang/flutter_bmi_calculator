@@ -117,7 +117,7 @@ class DisplayText extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 20,),
+            kSizedBoxH20,
           ],
         ),
       )
