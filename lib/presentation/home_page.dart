@@ -27,10 +27,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BmiBloc, BmiState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+    return BlocBuilder<BmiBloc, BmiState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -62,12 +59,12 @@ class MyHomePage extends StatelessWidget {
                       children: [
                         DisplayCard(
                           DisplayText('Weight','60', unit: 'kg',),
-                          DisplayActionButtons(),
+                          DisplayActionButtons('Weight'),
                         ),
                         kSizedBoxW5,
                         DisplayCard(
                           DisplayText('Age','30',),
-                          DisplayActionButtons(),
+                          DisplayActionButtons('Age'),
                         ),
                       ],
                     ),
@@ -88,7 +85,9 @@ class MyHomePage extends StatelessWidget {
                         )
                       )
                     ),
-                    onPressed: () => null
+                    onPressed: () {
+                      BlocProvider.of<BmiBloc>(context).add(CalculateBmiEvent());
+                    }
                   ),
                   kSizedBoxH20,
                 ],

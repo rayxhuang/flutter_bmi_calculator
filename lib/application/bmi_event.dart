@@ -5,16 +5,28 @@ abstract class BmiEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class ChooseGenderMaleEvent extends BmiEvent{}
+class ChooseGenderEvent extends BmiEvent{
+  final int gender;
+  ChooseGenderEvent(this.gender);
 
-class ChooseGenderFemaleEvent extends BmiEvent{}
+  @override
+  List<Object?> get props => [gender];
+}
 
-class ChooseHeightIncrementEvent extends BmiEvent{}
+class ChooseHeightEvent extends BmiEvent{
+  final int height;
+  ChooseHeightEvent(this.height);
 
-class ChooseHeightDecrementEvent extends BmiEvent{}
+  @override
+  List<Object?> get props => [height];
+}
 
 class ChooseWeightIncrementEvent extends BmiEvent{}
 
 class ChooseWeightDecrementEvent extends BmiEvent{}
+
+class ChooseAgeIncrementEvent extends BmiEvent{}
+
+class ChooseAgeDecrementEvent extends BmiEvent{}
 
 class CalculateBmiEvent extends BmiEvent{}

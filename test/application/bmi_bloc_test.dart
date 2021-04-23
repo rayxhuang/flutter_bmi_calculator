@@ -1,17 +1,13 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bmi_app/application/bmi_bloc.dart';
 
 void main() {
   final BmiBloc bloc = BmiBloc();
 
   blocTest(
-    'Should emit ',
+    'Should change BmiState highlightGender property to 1 when male card pressed',
     build: () => bloc,
-    //act: (bloc) => bloc.add(),
-    //expect: () => [],
-    // verify: (_) {
-    //   verify(_networkInfo.isConnected).called(1);
-    // }
+    act: (BmiBloc bloc) => bloc.add(ChooseGenderEvent(1)),
+    expect: () => [BmiState(highlightGender: 1)],
   );
 }
