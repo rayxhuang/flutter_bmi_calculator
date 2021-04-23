@@ -13,6 +13,6 @@ class BmiBloc extends Bloc<BmiEvent, BmiState> {
   Stream<BmiState> mapEventToState(
     BmiEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+
   }
 }
