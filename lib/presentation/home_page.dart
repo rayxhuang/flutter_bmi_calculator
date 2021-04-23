@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bmi_app/application/bmi_bloc.dart';
 import 'package:flutter_bmi_app/presentation/components/constant.dart';
 import 'package:flutter_bmi_app/presentation/components/display_card.dart';
+import 'dart:math';
 
 class MyBMIApp extends StatelessWidget {
   @override
@@ -86,7 +87,20 @@ class MyHomePage extends StatelessWidget {
                       )
                     ),
                     onPressed: () {
-                      BlocProvider.of<BmiBloc>(context).add(CalculateBmiEvent());
+                      final bloc = BlocProvider.of<BmiBloc>(context);
+                      bloc.add(CalculateBmiEvent());
+                      final AlertDialog alert = AlertDialog(
+                        title: Text("Your BMI is"),
+                        content: Text("${calculateBmi(bloc.state.weight, bloc.state.height).toStringAsFixed(2)}"),
+                      );
+
+                      // show the dialog
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return alert;
+                        },
+                      );
                     }
                   ),
                   kSizedBoxH20,
@@ -97,5 +111,9 @@ class MyHomePage extends StatelessWidget {
         );
       },
     );
+  }
+
+  double calculateBmi(int weight, int height) {
+    return weight / pow(height / 100, 2);
   }
 }

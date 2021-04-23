@@ -38,7 +38,6 @@ class BmiBloc extends Bloc<BmiEvent, BmiState> {
       }
     } else {
       final bmi = calculateBmi();
-      print(bmi);
       yield this.state.copyWith(bmi: bmi);
     }
   }
